@@ -218,7 +218,7 @@ async function createWidget() {
 
     distanceStack.addSpacer(1)
     let temperature = carData.data.vehicleStatus.additionalVehicleStatus.climateStatus.interiorTemp;
-    let totalDistaneNo = distanceStack.addText(Math.round(temperature) + '°C');
+    let totalDistaneNo = distanceStack.addText(Math.round(temperature * 10) / 10 + '°C');
     totalDistaneNo.font = Font.semiboldSystemFont(11);
     totalDistaneNo.textColor = textColor;
 
