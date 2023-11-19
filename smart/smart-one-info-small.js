@@ -36,21 +36,21 @@ const textColor = new Color('#34443c'); // widget text color
 // LANGUAGES
 const languageMap = {
   en: {
-    temperature: 'Temperature',
+    temperature: 'Temp. I/O °C',
     range: 'Range',
     location: 'Location',
     unavailable: 'unavailable',
   },
 
   de: {
-    temperature: 'Temperatur',
+    temperature: 'Temp.  I/A °C',
     range: 'Reichweite',
     location: 'Standort',
     unavailable: 'Nicht verfügbar',
   },
 
   fr: {
-    temperature: 'Température',
+    temperature: 'Temp. I/E °C',
     range: 'Autonomie',
     location: 'Position',
     unavailable: 'indisponible',
@@ -213,12 +213,13 @@ async function createWidget() {
     temperatureLabelStack.size = new Size(68, 14)
 
     let temperatureLabel = temperatureLabelStack.addText(lang.temperature);
-    temperatureLabel.font = Font.semiboldSystemFont(10);
+    temperatureLabel.font = Font.systemFont(10);
     temperatureLabel.textColor = labelTextColor;
 
     distanceStack.addSpacer(1)
     let temperature = carData.data.vehicleStatus.additionalVehicleStatus.climateStatus.interiorTemp;
-    let totalDistaneNo = distanceStack.addText(Math.round(temperature * 10) / 10 + '°C');
+    let outTemperature = carData.data.vehicleStatus.additionalVehicleStatus.climateStatus.exteriorTemp;
+    let totalDistaneNo = distanceStack.addText(Math.round(temperature * 10) / 10 + ' / ' + Math.round(outTemperature * 10) / 10);
     totalDistaneNo.font = Font.semiboldSystemFont(11);
     totalDistaneNo.textColor = textColor;
 
